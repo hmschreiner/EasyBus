@@ -9,6 +9,7 @@ angular.module('starter.controllers', [])
                 ['5939', -29.97877300000000000, -51.18900100000000000],
                 ['3983', -29.97877700000000000, -51.17880000000000000],
                 ['268', -30.16219500000000000, -51.18286000000000000],
+                ['5939', -29.9785089, -51.1141371]
             ];
 
             function initialize() {
@@ -49,7 +50,7 @@ angular.module('starter.controllers', [])
 
                     map.mapTypes.set('map_style', styledMap);
                     map.setMapTypeId('map_style');
-                    
+
 
                     new google.maps.Marker({
                         position: new google.maps.LatLng(position.coords.latitude, position.coords.longitude),
