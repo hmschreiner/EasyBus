@@ -12,9 +12,10 @@
 
   <script type="text/javascript">
    var locations = [
-	['3719-10818', -29.97877700000000000 , -51.19641500000000000],
-	['5939-12443', -29.97877300000000000 , -51.18900100000000000],
-	['3983-16697', -29.97877700000000000 , -51.17880000000000000]
+	['3719', -29.97877700000000000 , -51.19641500000000000],
+	['5939', -29.97877300000000000 , -51.18900100000000000],
+	['3983', -29.97877700000000000 , -51.17880000000000000],
+  ['268', -30.16219500000000000 , -51.18286000000000000],
 
 
     ];
@@ -50,7 +51,7 @@
 
     var map = new google.maps.Map(document.getElementById('map'), {
       zoom: 17,
-      center: new google.maps.LatLng(-29.9787770,-51.196),
+      center: new google.maps.LatLng(-30.16219500000000000,-51.18286000000000000),
       mapTypeId: google.maps.MapTypeId.ROADMAP,
       disableDefaultUI: true,
 
@@ -66,7 +67,7 @@
       marker = new google.maps.Marker({
         position: new google.maps.LatLng(locations[i][1], locations[i][2]),
         map: map,
-        icon: 'https://raw.githubusercontent.com/hmschreiner/EasyBus-Api/master/images/buspoint-orange.png',
+        icon: 'https://raw.githubusercontent.com/hmschreiner/EasyBus/master/api/images/buspoint-orange.png',
       	title: 'Bus Stop'
       });
 
@@ -74,6 +75,8 @@
         return function() {
           infowindow.setContent(locations[i][0]);
           infowindow.open(map, marker);
+          window.location = 'linhas.html?linha='+locations[i][0];
+          /*window.location =  'http://www.poatransporte.com.br/php/facades/process.php?a=nc&p=268&t=o';*/
          
         }
       })(marker, i));
