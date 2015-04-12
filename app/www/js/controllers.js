@@ -34,17 +34,6 @@ angular.module('starter.controllers', [])
                     content: compiled[0]
                 });
 
-                var marker = new google.maps.Marker({
-                    position: myLatlng,
-                    map: map,
-                    title: 'Uluru (Ayers Rock)'
-                });
-
-                google.maps.event.addListener(marker, 'click', function () {
-                    //infowindow.open(map, marker);
-                    window.location = 'linhas.html?linha=' + locations[i][0];
-                });
-
                 $scope.map = map;
                 carregaParadas();
             }
@@ -60,7 +49,8 @@ angular.module('starter.controllers', [])
 
                     google.maps.event.addListener(marker, 'click', (function (marker, i) {
                         return function () {
-                            window.location = '#/busStop/1';
+                            //window.location = '#/busStop/1';
+                            $location.path("#/busStop/1");
                             /*window.location =  'http://www.poatransporte.com.br/php/facades/process.php?a=nc&p=268&t=o';*/
                         }
                     })(marker, i));
@@ -94,7 +84,7 @@ angular.module('starter.controllers', [])
         })
 
         .controller('BusStopDetailCtrl', function ($scope, $stateParams, Onibus) {
-            $scope.onibus = Onibus.get($stateParams.busStopId);
+            //$scope.onibus = Onibus.get($stateParams.busStopId);
         })
 
         .controller('DashCtrl', function ($scope) {
