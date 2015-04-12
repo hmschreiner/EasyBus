@@ -26,17 +26,7 @@ var parseQueryString = function() {
 //Example how to use it: 
 var params = parseQueryString();
 
-function insertReply(content) {
-    document.getElementById('output').innerHTML = content;
-}
-
-// create script element
-var script = document.createElement('script');
-// assing src with callback name
-script.src = 'https://www.googleapis.com/freebase/v1/text/en/bob_dylan?callback=insertReply';
-// insert script to document and load content
-document.body.appendChild(script);
-/*document.write(params["linha"]);*/
+document.write(params["linha"]);
 
 </script>
 
