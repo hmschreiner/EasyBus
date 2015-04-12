@@ -12,11 +12,11 @@ angular.module('starter.controllers', [])
             ];
 
             function initialize() {
-                var myLatlng = new google.maps.LatLng(-30.16219500000000000, -51.18286000000000000);
+                var myLatlng = new google.maps.LatLng(-29.980529, -51.190685);
 
                 var mapOptions = {
                     center: myLatlng,
-                    zoom: 16,
+                    zoom: 15,
                     mapTypeId: google.maps.MapTypeId.ROADMAP,
                     disableDefaultUI: true
                 };
