@@ -1,0 +1,8 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/EasyBus-Api.sln.ide
+/packages
+/dotnet.api/bin
+/dotnet.api/obj
