@@ -8,7 +8,7 @@
           type="text/javascript"></script>
 </head> 
 <body>
-  <div id="map" style="width: 800px; height: 600px;"></div>
+  <div id="map" style="width: 100%; height: 100%;"></div>
 
   <script type="text/javascript">
    var locations = [
