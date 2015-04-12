@@ -2,7 +2,7 @@ angular.module('starter.controllers', [])
 
         .controller('MapCtrl', function ($scope, $ionicLoading, $compile, $location) {
 
-            var styles = [{ stylers: [{ saturation: -90 }] }, { featureType: "transit", elementType: "all", stylers: [{ lightness: 100 }, { visibility: "off" }] }, { featureType: "poi", elementType: "all", stylers: [{ lightness: 100 }, { visibility: "off" }] }];
+            var styles = [{stylers: [{saturation: -90}]}, {featureType: "transit", elementType: "all", stylers: [{lightness: 100}, {visibility: "off"}]}, {featureType: "poi", elementType: "all", stylers: [{lightness: 100}, {visibility: "off"}]}];
 
             var locations = [
                 ['3719', -29.97877700000000000, -51.19641500000000000],
@@ -12,20 +12,16 @@ angular.module('starter.controllers', [])
             ];
 
             function initialize() {
-                var myLatlng = new google.maps.LatLng(-29.980529, -51.190685);
 
                 var mapOptions = {
-                    center: myLatlng,
-                    zoom: 15,
+                    zoom: 16,
                     mapTypeId: google.maps.MapTypeId.ROADMAP,
                     disableDefaultUI: true
                 };
 
-                var styledMap = new google.maps.StyledMapType(styles, { name: "Styled Map" });
-                var map = new google.maps.Map(document.getElementById("gmap"),
+                styledMap = new google.maps.StyledMapType(styles, {name: "Styled Map"});
+                map = new google.maps.Map(document.getElementById("gmap"),
                     mapOptions);
-                map.mapTypes.set('map_style', styledMap);
-                map.setMapTypeId('map_style');
 
                 //Marker + infowindow + angularjs compiled ng-click
                 var contentString = "<div><a ng-click='clickTest()'>Click me!</a></div>";
@@ -40,6 +36,28 @@ angular.module('starter.controllers', [])
             }
 
             function carregaParadas() {
+
+                var options = {enableHighAccuracy: true};
+                navigator.geolocation.getCurrentPosition(onSuccess, onError, options);
+
+                // onSuccess Geolocation
+                //
+                function onSuccess(position) {
+
+                    // alert('Get location...');
+                    map.setCenter(new google.maps.LatLng(position.coords.latitude, position.coords.longitude));
+
+                    map.mapTypes.set('map_style', styledMap);
+                    map.setMapTypeId('map_style');
+                    
+
+                    new google.maps.Marker({
+                        position: new google.maps.LatLng(position.coords.latitude, position.coords.longitude),
+                        map: $scope.map,
+                        icon: 'img/current_location.png',
+                        title: 'Bus Stop'
+                    });
+
                 for (i = 0; i < locations.length; i++) {
                     marker = new google.maps.Marker({
                         position: new google.maps.LatLng(locations[i][1], locations[i][2]),
@@ -55,6 +73,15 @@ angular.module('starter.controllers', [])
                         }
                     })(marker, i));
                 }
+                }
+
+                function onError(error) {
+                    alert('code: ' + error.code + '\n' +
+                            'message: ' + error.message + '\n');
+                }
+
+
+
             }
 
             google.maps.event.addDomListener(window, 'load', initialize);
@@ -86,7 +113,8 @@ angular.module('starter.controllers', [])
         .controller('BusStopDetailCtrl', function ($scope, $stateParams, Onibus) {
             Onibus.get($stateParams.lat, $stateParams.lon).success(function (data) {
                 $scope.onibus = data;
-            });;
+            });
+            ;
             $scope.remove = function () {
             };
         })
