@@ -22,7 +22,7 @@ angular.module('starter.controllers', [])
 
                 styledMap = new google.maps.StyledMapType(styles, {name: "Styled Map"});
                 map = new google.maps.Map(document.getElementById("gmap"),
-                        mapOptions);
+                    mapOptions);
 
                 //Marker + infowindow + angularjs compiled ng-click
                 var contentString = "<div><a ng-click='clickTest()'>Click me!</a></div>";
@@ -59,21 +59,21 @@ angular.module('starter.controllers', [])
                         title: 'Bus Stop'
                     });
 
-                    for (i = 0; i < locations.length; i++) {
-                        marker = new google.maps.Marker({
-                            position: new google.maps.LatLng(locations[i][1], locations[i][2]),
-                            map: $scope.map,
-                            icon: 'https://raw.githubusercontent.com/hmschreiner/EasyBus/master/api/images/buspoint-orange.png',
-                            title: 'Bus Stop'
-                        });
+                for (i = 0; i < locations.length; i++) {
+                    marker = new google.maps.Marker({
+                        position: new google.maps.LatLng(locations[i][1], locations[i][2]),
+                        map: $scope.map,
+                        icon: 'https://raw.githubusercontent.com/hmschreiner/EasyBus/master/api/images/buspoint-orange.png',
+                        title: 'Bus Stop'
+                    });
 
-                        google.maps.event.addListener(marker, 'click', (function (marker, i) {
-                            return function () {
-                                window.location = '#/tab/busStop/' + locations[i][1] + ',' + locations[i][2];
-                                /*window.location =  'http://www.poatransporte.com.br/php/facades/process.php?a=nc&p=268&t=o';*/
-                            }
-                        })(marker, i));
-                    }
+                    google.maps.event.addListener(marker, 'click', (function (marker, i) {
+                        return function () {
+                            window.location = '#/tab/busStop/' + locations[i][1] + ',' + locations[i][2];
+                            /*window.location =  'http://www.poatransporte.com.br/php/facades/process.php?a=nc&p=268&t=o';*/
+                        }
+                    })(marker, i));
+                }
                 }
 
                 function onError(error) {

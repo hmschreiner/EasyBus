@@ -31,7 +31,7 @@ namespace WebApplication2.Controllers
                     item.Distancia = geo.GetDistanceTo(new GeoCoordinate(-29.977258, -51.19064));
             }
 
-            return onibus;
+            return onibus.OrderBy(_ => _.Distancia);
         }
     }
 }
