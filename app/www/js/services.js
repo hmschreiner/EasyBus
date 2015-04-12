@@ -8,7 +8,7 @@ angular.module('starter.services', [])
                 chats.splice(chats.indexOf(chat), 1);
             },
             get: function (busStopId) {
-                return $http.get(easyBus.config.rootUrl + '/api/OnibusACaminho');
+                return $http.get(easyBus.config.rootUrl + '/api/OnibusACaminho?latitude=-29.976366&longitude=-51.196736');
             }
         };
     })

@@ -1,11 +1,8 @@
 ﻿using dotnet.api.Codes;
-using dotnet.api.ContextoDados;
+using dotnet.api.Migrations;
 using dotnet.api.Models;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
+using System.Device.Location;
 using System.Web.Http;
 
 namespace WebApplication2.Controllers
@@ -13,22 +10,18 @@ namespace WebApplication2.Controllers
     [AllowCrossSiteJson]
     public class OnibusACaminhoController : ApiController
     {
-        public IEnumerable<OnibusModel> Get()
+        public IEnumerable<OnibusModel> Get(double latitude, double longitude)
         {
-            var contexto = new ContextoEmMemoria();
+            var onibus = Dados.Onibus;
 
-            return contexto.OnibusModel;
+            var geo = new GeoCoordinate(latitude, longitude);
 
-            using (var db = new ApplicationDbContext())
+            foreach (var item in onibus)
             {
-                return db.Set<OnibusModel>();
+                item.Distancia = geo.GetDistanceTo(new GeoCoordinate(-29.977258, -51.190642));
             }
 
-            return new OnibusModel[] { 
-                new OnibusModel{ Nome = "Onibus 1", OnibusID = 1, Distancia = 55, Notifica = true}, 
-                new OnibusModel{ Nome = "Onibus 2", OnibusID = 2, Distancia = 51, Notifica = false}, 
-                new OnibusModel{ Nome = "Onibus 3", OnibusID = 3, Distancia = 12, Notifica = false}, 
-            };
+            return onibus;
         }
     }
 }
