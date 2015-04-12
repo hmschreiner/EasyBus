@@ -1,5 +1,5 @@
 angular.module('starter.services', [])
-    .factory('Onibus', function () {
+    .factory('Onibus', function ($http) {
         return {
             all: function () {
                 return chats;
@@ -8,6 +8,13 @@ angular.module('starter.services', [])
                 chats.splice(chats.indexOf(chat), 1);
             },
             get: function (busStopId) {
+                var retorno = {};
+                $http.get(easyBus.config.rootUrl + '/api/OnibusACaminho').success(function (data) {
+                    retorno = data;
+                });
+
+                return retorno;
+
                 for (var i = 0; i < chats.length; i++) {
                     if (chats[i].id === parseInt(chatId)) {
                         return chats[i];

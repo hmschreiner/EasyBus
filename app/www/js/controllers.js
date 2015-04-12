@@ -84,7 +84,7 @@ angular.module('starter.controllers', [])
         })
 
         .controller('BusStopDetailCtrl', function ($scope, $stateParams, Onibus) {
-            $scope.onibus = []; //Onibus.get($stateParams.busStopId);     
+            $scope.onibus = Onibus.get($stateParams.busStopId);     
             $scope.remove = function () {
             };
         })

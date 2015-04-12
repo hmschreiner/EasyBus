@@ -1,4 +1,5 @@
-﻿using dotnet.api.Models;
+﻿using dotnet.api.Codes;
+using dotnet.api.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,6 +9,7 @@ using System.Web.Http;
 
 namespace WebApplication2.Controllers
 {
+    [AllowCrossSiteJson]
     public class OnibusACaminhoController : ApiController
     {
         public IEnumerable<OnibusModel> Get()
