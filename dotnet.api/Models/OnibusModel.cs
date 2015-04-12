@@ -12,5 +12,7 @@ namespace dotnet.api.Models
         public string Nome { get; set; }
 
         public decimal Distancia { get; set; }
+
+        public bool Notifica { get; set; }
     }
 }
