@@ -38,5 +38,32 @@ namespace dotnet.api.Migrations
                 };
             }
         }
+
+        public static ParadaOnibus[] ParadasOnibus
+        {
+            get
+            {
+                return new ParadaOnibus[]{
+                    new ParadaOnibus{ ParadaID = 3719, OnibusID = 127902 },
+                    new ParadaOnibus{ ParadaID = 3719, OnibusID = 127903 },
+                    new ParadaOnibus{ ParadaID = 3719, OnibusID = 127904 },
+                    new ParadaOnibus{ ParadaID = 3719, OnibusID = 128079 },
+
+                    new ParadaOnibus{ ParadaID = 5939, OnibusID = 128082 },
+                    new ParadaOnibus{ ParadaID = 5939, OnibusID = 128084 },
+
+                    new ParadaOnibus{ ParadaID = 3983, OnibusID = 128078 },
+                    new ParadaOnibus{ ParadaID = 3983, OnibusID = 128093 },
+                    new ParadaOnibus{ ParadaID = 3983, OnibusID = 128094 },
+
+                    new ParadaOnibus{ ParadaID = 268, OnibusID = 127692 },
+                    new ParadaOnibus{ ParadaID = 268, OnibusID = 127694 },
+                    new ParadaOnibus{ ParadaID = 268, OnibusID = 127698 },
+                    new ParadaOnibus{ ParadaID = 268, OnibusID = 127702 },
+                    new ParadaOnibus{ ParadaID = 268, OnibusID = 127874 },
+                    new ParadaOnibus{ ParadaID = 268, OnibusID = 128009 },
+                };
+            }
+        }
     }
 }
