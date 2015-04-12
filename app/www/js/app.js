@@ -59,7 +59,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
                     })
 
                     .state('tab.busStop-detail', {
-                        url: '/busStop/:busStopId',
+                        url: '/busStop/:lat,:lon',
                         views: {
                             'tab-map': {
                                 templateUrl: 'templates/busStop-detail.html',
