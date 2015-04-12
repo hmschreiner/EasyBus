@@ -1,6 +1,6 @@
 angular.module('starter.controllers', [])
 
-        .controller('MapCtrl', function ($scope, $ionicLoading, $compile) {
+        .controller('MapCtrl', function ($scope, $ionicLoading, $compile, $location) {
 
             var styles = [{ stylers: [{ saturation: -90 }] }, { featureType: "transit", elementType: "all", stylers: [{ lightness: 100 }, { visibility: "off" }] }, { featureType: "poi", elementType: "all", stylers: [{ lightness: 100 }, { visibility: "off" }] }];
 
@@ -49,8 +49,7 @@ angular.module('starter.controllers', [])
 
                     google.maps.event.addListener(marker, 'click', (function (marker, i) {
                         return function () {
-                            //window.location = '#/busStop/1';
-                            $location.path("#/busStop/1");
+                            window.location = '#/tab/busStop/' + locations[i][0];
                             /*window.location =  'http://www.poatransporte.com.br/php/facades/process.php?a=nc&p=268&t=o';*/
                         }
                     })(marker, i));
@@ -84,7 +83,9 @@ angular.module('starter.controllers', [])
         })
 
         .controller('BusStopDetailCtrl', function ($scope, $stateParams, Onibus) {
-            //$scope.onibus = Onibus.get($stateParams.busStopId);
+            $scope.onibus = []; //Onibus.get($stateParams.busStopId);     
+            $scope.remove = function () {
+            };
         })
 
         .controller('DashCtrl', function ($scope) {
