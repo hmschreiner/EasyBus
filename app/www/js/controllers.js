@@ -4,6 +4,13 @@ angular.module('starter.controllers', [])
 
             var styles = [{ stylers: [{ saturation: -90 }] }, { featureType: "transit", elementType: "all", stylers: [{ lightness: 100 }, { visibility: "off" }] }, { featureType: "poi", elementType: "all", stylers: [{ lightness: 100 }, { visibility: "off" }] }];
 
+            var locations = [
+                ['3719', -29.97877700000000000, -51.19641500000000000],
+                ['5939', -29.97877300000000000, -51.18900100000000000],
+                ['3983', -29.97877700000000000, -51.17880000000000000],
+                ['268', -30.16219500000000000, -51.18286000000000000],
+            ];
+
             function initialize() {
                 var myLatlng = new google.maps.LatLng(-30.16219500000000000, -51.18286000000000000);
 
@@ -34,11 +41,32 @@ angular.module('starter.controllers', [])
                 });
 
                 google.maps.event.addListener(marker, 'click', function () {
-                    infowindow.open(map, marker);
+                    //infowindow.open(map, marker);
+                    window.location = 'linhas.html?linha=' + locations[i][0];
                 });
 
                 $scope.map = map;
+                carregaParadas();
             }
+
+            function carregaParadas() {
+                for (i = 0; i < locations.length; i++) {
+                    marker = new google.maps.Marker({
+                        position: new google.maps.LatLng(locations[i][1], locations[i][2]),
+                        map: $scope.map,
+                        icon: 'https://raw.githubusercontent.com/hmschreiner/EasyBus/master/api/images/buspoint-orange.png',
+                        title: 'Bus Stop'
+                    });
+
+                    google.maps.event.addListener(marker, 'click', (function (marker, i) {
+                        return function () {
+                            window.location = '#/busStop/1';
+                            /*window.location =  'http://www.poatransporte.com.br/php/facades/process.php?a=nc&p=268&t=o';*/
+                        }
+                    })(marker, i));
+                }
+            }
+
             google.maps.event.addDomListener(window, 'load', initialize);
 
             $scope.centerOnMe = function () {
@@ -63,6 +91,10 @@ angular.module('starter.controllers', [])
                 alert('Example of infowindow with ng-click')
             };
             initialize();
+        })
+
+        .controller('BusStopDetailCtrl', function ($scope, $stateParams, Onibus) {
+            $scope.onibus = Onibus.get($stateParams.busStopId);
         })
 
         .controller('DashCtrl', function ($scope) {
