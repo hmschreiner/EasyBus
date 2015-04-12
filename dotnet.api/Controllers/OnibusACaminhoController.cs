@@ -13,9 +13,9 @@ namespace WebApplication2.Controllers
         public IEnumerable<OnibusModel> Get()
         {
             return new OnibusModel[] { 
-                new OnibusModel{ Nome = "Onibus 1", OnibusID = 1, Distancia = 55}, 
-                new OnibusModel{ Nome = "Onibus 2", OnibusID = 2, Distancia = 51}, 
-                new OnibusModel{ Nome = "Onibus 3", OnibusID = 3, Distancia = 12}, 
+                new OnibusModel{ Nome = "Onibus 1", OnibusID = 1, Distancia = 55, Notifica = true}, 
+                new OnibusModel{ Nome = "Onibus 2", OnibusID = 2, Distancia = 51, Notifica = false}, 
+                new OnibusModel{ Nome = "Onibus 3", OnibusID = 3, Distancia = 12, Notifica = false}, 
             };
         }
     }
