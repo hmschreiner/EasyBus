@@ -7,8 +7,8 @@ angular.module('starter.services', [])
             remove: function (chat) {
                 chats.splice(chats.indexOf(chat), 1);
             },
-            get: function (busStopId) {
-                return $http.get(easyBus.config.rootUrl + '/api/OnibusACaminho?latitude=-29.976366&longitude=-51.196736');
+            get: function (lat, lon) {
+                return $http.get(easyBus.config.rootUrl + '/api/OnibusACaminho?latitude=' + lat + '&longitude=' + lon);
             }
         };
     })

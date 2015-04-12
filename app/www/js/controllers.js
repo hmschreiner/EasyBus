@@ -50,7 +50,7 @@ angular.module('starter.controllers', [])
 
                     google.maps.event.addListener(marker, 'click', (function (marker, i) {
                         return function () {
-                            window.location = '#/tab/busStop/' + locations[i][0];
+                            window.location = '#/tab/busStop/' + locations[i][1] + ',' + locations[i][2];
                             /*window.location =  'http://www.poatransporte.com.br/php/facades/process.php?a=nc&p=268&t=o';*/
                         }
                     })(marker, i));
@@ -84,7 +84,7 @@ angular.module('starter.controllers', [])
         })
 
         .controller('BusStopDetailCtrl', function ($scope, $stateParams, Onibus) {
-            Onibus.get($stateParams.busStopId).success(function (data) {
+            Onibus.get($stateParams.lat, $stateParams.lon).success(function (data) {
                 $scope.onibus = data;
             });;
             $scope.remove = function () {
