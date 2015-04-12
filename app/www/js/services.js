@@ -8,12 +8,7 @@ angular.module('starter.services', [])
                 chats.splice(chats.indexOf(chat), 1);
             },
             get: function (busStopId) {
-                var retorno = {};
-                $http.get(easyBus.config.rootUrl + '/api/OnibusACaminho').success(function (data) {
-                    retorno = data;
-                });
-
-                return retorno;
+                return $http.get(easyBus.config.rootUrl + '/api/OnibusACaminho');
             }
         };
     })
