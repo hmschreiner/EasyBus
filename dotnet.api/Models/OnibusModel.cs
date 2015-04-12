@@ -9,6 +9,8 @@ namespace dotnet.api.Models
     {
         public int OnibusID { get; set; }
 
+        public string Codigo { get; set; }
+
         public string Nome { get; set; }
 
         public decimal Distancia { get; set; }
