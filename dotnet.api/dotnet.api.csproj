@@ -219,6 +219,7 @@
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\OnibusModel.cs" />
     <Compile Include="Models\ParadaModel.cs" />
+    <Compile Include="Models\ParadaOnibus.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Providers\ApplicationOAuthProvider.cs" />
     <Compile Include="Results\ChallengeResult.cs" />
