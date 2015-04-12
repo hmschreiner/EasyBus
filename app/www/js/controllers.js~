@@ -17,8 +17,7 @@ angular.module('starter.controllers', [])
                 var mapOptions = {
                     center: myLatlng,
                     zoom: 16,
-                    mapTypeId: google.maps.MapTypeId.ROADMAP,
-                    disableDefaultUI: true
+                    mapTypeId: google.maps.MapTypeId.ROADMAP
                 };
 
                 var styledMap = new google.maps.StyledMapType(styles, { name: "Styled Map" });
