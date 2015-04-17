@@ -230,6 +230,7 @@
     <Content Include="Content\BUS.png" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Content\lettering.png" />
+    <Content Include="Content\qr_code_without_logo.jpg" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\bootstrap.js" />
